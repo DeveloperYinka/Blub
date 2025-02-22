@@ -4,7 +4,7 @@ import "../Resources/FunFactCarousel.css";
 
 const data = [
   "Did you know? Blubtheblob is native to Avax blockchain",
-  "Question: what would you say blub is? a culture?, a life style? there're no wrong answers ",
+  "Question: what would you say blub is, A culture?, A life style?, There're no wrong answers ",
   "Fun Fact: Blub has a community on X",
   "Question: is Avax a blub?",
 ];

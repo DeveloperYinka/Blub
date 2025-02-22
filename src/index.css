@@ -16,4 +16,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.error-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #ff4d6d; /* Light red */
+  padding: 50px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.error-container p {
+  font-size: 18px;
+}
 

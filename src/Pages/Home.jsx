@@ -26,11 +26,21 @@ export default function Home() {
             <section>
                 <VideoCarousel/>
             </section>
-            <footer>
-                <p>Copyright 2024 &#169;</p>
+            <footer style ={{paddingBottom:'30px'}}>
+                <p>Copyright 2025 &#169;</p>
+                <div style ={{display:'flex', flexDirection:'column'}}>
+
+                <span>
                 <a href="https://www.blubtheblob.com/" target="_blank" rel="noopener noreferrer" id="blub">
       Visit Blub The Blob
     </a>
+                </span>
+                <span>
+                <a href="https://x.com/Yinka_TC" target="_blank" rel="noopener noreferrer" id="kaizen">
+      kaizen &#8482;
+    </a>
+                </span>
+                </div>
             </footer>
             </div>
 

@@ -9,14 +9,14 @@ import video2 from "../Videos/blob video 2.mp4";
 
 const VideoCarousel = () => {
   const carouselRef = useRef(null);
-  const videoRef = useRef(null);
+  const videoRefs = useRef([]); // Array of video refs
   const [mainIndex, setMainIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
   // Handle video progress
   useEffect(() => {
-    const video = videoRef.current;
+    const video = videoRefs.current[mainIndex];
     if (!video) return;
 
     const updateProgress = () => {
@@ -27,9 +27,9 @@ const VideoCarousel = () => {
     return () => video.removeEventListener("timeupdate", updateProgress);
   }, [mainIndex]);
 
-  // Handle video end and move to the next slide
+  // Move to the next video when the current one ends
   const handleVideoEnd = () => {
-    const nextIndex = (mainIndex + 1) % 2; // Loop back to the first video
+    const nextIndex = (mainIndex + 1) % videoRefs.current.length; // Move to next video or restart from 0
     setMainIndex(nextIndex);
     carouselRef.current.slideTo(nextIndex);
   };
@@ -37,30 +37,33 @@ const VideoCarousel = () => {
   // Toggle mute/unmute
   const toggleMute = () => {
     setIsMuted(!isMuted);
+    videoRefs.current.forEach((video) => {
+      if (video) video.muted = !isMuted;
+    });
   };
 
   const items = [
-    <div className="item">
+    <div className="item" key="video1">
       <video
-        ref={videoRef}
+        ref={(el) => (videoRefs.current[0] = el)}
         width="100%"
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd}
+        onEnded={handleVideoEnd} // Move to the next video when finished
       >
         <source src={video1} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>,
-    <div className="item">
+    <div className="item" key="video2">
       <video
-        ref={videoRef}
+        ref={(el) => (videoRefs.current[1] = el)}
         width="100%"
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd}
+        onEnded={handleVideoEnd} // Move to the next video when finished
       >
         <source src={video2} type="video/mp4" />
         Your browser does not support the video tag.

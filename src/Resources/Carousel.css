@@ -1,0 +1,41 @@
+.parent {
+  .parent {
+    width: 100%;
+    max-width: 1200px; /* Adjust max-width based on your design */
+    margin: 0 auto; /* Centers the carousel container */
+    text-align: center;
+  }
+}
+#section1 {
+  width: 60%;
+  height: 40vh;
+}
+
+.slider {
+  margin: 0 10px;
+  overflow: "hidden";
+  padding: 2rem 0;
+  height: 260px;
+}
+
+.slider img {
+  width: 100%;
+  border-radius: 10px;
+  height: 260px;
+}
+
+.react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+}
+
+.custom-dot-list-style button {
+  border: none;
+  background: rgba(212, 184, 192, 1);
+}
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: black; /*!important;*/
+}
+/* Hide left and right arrow buttons */
+.react-multiple-carousel__arrow {
+  display: none !important;
+}

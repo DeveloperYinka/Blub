@@ -1,0 +1,48 @@
+
+:root {
+    --soft-pink: #FAD4D8;
+    --deep-pink: #E67882;
+    --teal: #2AB7B0;
+    --light-gray: #F2F2F2;
+    --charcoal: #333333;
+    --barlow: 'Barlow Condensed', sans-serif;
+    --deeper-pink:#D35B68;
+ }
+
+ section {
+    background-color: var(--deep-pink);
+    padding: 1px;
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    right: 15px;
+    border: 1px solid var(--deeper-pink);
+    border-radius: 10px;
+  
+    z-index: 1;
+  }
+  
+
+#name{
+    color: var(--deep-pink);
+   
+}
+ #logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+}
+section span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--barlow);
+    text-align: center;
+    padding: 10px;
+    margin: 0px;
+    /* border-bottom: 1px solid var(--deep-pink); */
+    gap: 10px;
+}
+  
+ 
+  

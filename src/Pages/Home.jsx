@@ -40,6 +40,11 @@ export default function Home() {
       kaizen &#8482;
     </a>
                 </span>
+                <span>
+                <a href="https://x.com/BlubBlobCoin" target="_blank" rel="noopener noreferrer" id="blub">
+      BlubBlobCoin &#8482;
+    </a>
+                </span>
                 </div>
             </footer>
             </div>

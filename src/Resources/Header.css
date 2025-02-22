@@ -10,16 +10,16 @@
  }
 
  section {
-    background-color: var(--deep-pink);
-    padding: 1px;
-    position: fixed;
-    top: 10px;
-    left: 15px;
-    right: 15px;
-    border: 1px solid var(--deeper-pink);
-    border-radius: 10px;
-  
-    z-index: 1;
+  background-color: var(--deep-pink);
+  padding: 10px;
+  border: 1px solid var(--deeper-pink);
+  border-radius: 10px;
+  z-index: 1;
+  width: 90%;
+  max-width: 600px;
+  margin: 4px auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
 
@@ -38,7 +38,7 @@ section span{
     align-items: center;
     font-family: var(--barlow);
     text-align: center;
-    padding: 10px;
+    padding: 3px;
     margin: 0px;
     /* border-bottom: 1px solid var(--deep-pink); */
     gap: 10px;

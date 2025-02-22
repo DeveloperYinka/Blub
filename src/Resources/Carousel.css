@@ -14,7 +14,7 @@
 .slider {
   margin: 0 10px;
   overflow: "hidden";
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   height: 260px;
 }
 

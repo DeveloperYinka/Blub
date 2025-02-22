@@ -1,0 +1,27 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: #ffb6c1;
+    padding: 20px;
+  }
+  
+  .carousel-content {
+    /* position: relative; */
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .carousel-item {
+    /* position: absolute; */
+    width: 100%;
+  }
+  

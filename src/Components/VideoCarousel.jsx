@@ -14,6 +14,14 @@ const VideoCarousel = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
+  // Ensure the active video plays automatically when mainIndex changes
+  useEffect(() => {
+    const video = videoRefs.current[mainIndex];
+    if (video) {
+      video.play();
+    }
+  }, [mainIndex]);
+
   // Handle video progress
   useEffect(() => {
     const video = videoRefs.current[mainIndex];
@@ -29,9 +37,11 @@ const VideoCarousel = () => {
 
   // Move to the next video when the current one ends
   const handleVideoEnd = () => {
-    const nextIndex = (mainIndex + 1) % videoRefs.current.length; // Move to next video or restart from 0
+    const nextIndex = (mainIndex + 1) % videoRefs.current.length; // Loop back after last video
     setMainIndex(nextIndex);
-    carouselRef.current.slideTo(nextIndex);
+    if (carouselRef.current) {
+      carouselRef.current.slideTo(nextIndex);
+    }
   };
 
   // Toggle mute/unmute
@@ -50,7 +60,7 @@ const VideoCarousel = () => {
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd} // Move to the next video when finished
+        onEnded={handleVideoEnd} // Move to next video after finish
       >
         <source src={video1} type="video/mp4" />
         Your browser does not support the video tag.
@@ -63,7 +73,7 @@ const VideoCarousel = () => {
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd} // Move to the next video when finished
+        onEnded={handleVideoEnd} // Move to next video after finish
       >
         <source src={video2} type="video/mp4" />
         Your browser does not support the video tag.

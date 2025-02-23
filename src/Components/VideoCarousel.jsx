@@ -14,15 +14,7 @@ const VideoCarousel = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Ensure the active video plays automatically when mainIndex changes
-  useEffect(() => {
-    const video = videoRefs.current[mainIndex];
-    if (video) {
-      video.play();
-    }
-  }, [mainIndex]);
-
-  // Handle video progress
+  // Handle video progress for the current video
   useEffect(() => {
     const video = videoRefs.current[mainIndex];
     if (!video) return;
@@ -35,13 +27,21 @@ const VideoCarousel = () => {
     return () => video.removeEventListener("timeupdate", updateProgress);
   }, [mainIndex]);
 
-  // Move to the next video when the current one ends
-  const handleVideoEnd = () => {
-    const nextIndex = (mainIndex + 1) % videoRefs.current.length; // Loop back after last video
-    setMainIndex(nextIndex);
-    if (carouselRef.current) {
-      carouselRef.current.slideTo(nextIndex);
+  // Auto-play the video whenever the mainIndex changes
+  useEffect(() => {
+    const video = videoRefs.current[mainIndex];
+    if (video) {
+      video.play().catch((error) => {
+        console.error("Error playing video:", error);
+      });
     }
+  }, [mainIndex]);
+
+  // Move to the next video or loop back to the first video
+  const handleVideoEnd = () => {
+    const nextIndex = (mainIndex + 1) % videoRefs.current.length;
+    setMainIndex(nextIndex);
+    carouselRef.current.slideTo(nextIndex);
   };
 
   // Toggle mute/unmute
@@ -60,7 +60,7 @@ const VideoCarousel = () => {
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd} // Move to next video after finish
+        onEnded={handleVideoEnd} // Move to next video when finished
       >
         <source src={video1} type="video/mp4" />
         Your browser does not support the video tag.
@@ -73,7 +73,7 @@ const VideoCarousel = () => {
         autoPlay
         muted={isMuted}
         className="media"
-        onEnded={handleVideoEnd} // Move to next video after finish
+        onEnded={handleVideoEnd} // Move to next video when finished
       >
         <source src={video2} type="video/mp4" />
         Your browser does not support the video tag.
@@ -89,7 +89,7 @@ const VideoCarousel = () => {
         activeIndex={mainIndex}
         disableDotsControls
         disableButtonsControls
-        infinite
+        infinite={false} // We handle looping manually in handleVideoEnd
       />
 
       {/* Speaker Button */}
